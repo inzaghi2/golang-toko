@@ -2,7 +2,6 @@ package handlers
 
 import (
 	"golang-toko/models"
-	"sync"
 
 	"github.com/gin-gonic/gin"
 	"github.com/jinzhu/gorm"
@@ -11,20 +10,7 @@ import (
 func ListProducts(db *gorm.DB) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		var products []models.Product
-		var wg sync.WaitGroup
-
-		// Menambahkan satu goroutine ke WaitGroup
-		wg.Add(1)
-
-		// Memulai goroutine untuk melakukan operasi yang membutuhkan waktu lama
-		go func() {
-			defer wg.Done() // Menandai bahwa goroutine telah selesai
-			db.Find(&products)
-		}()
-
-		// Menunggu goroutine selesai
-		wg.Wait()
-
+		db.Find(&products)
 		c.JSON(200, products)
 	}
 }
