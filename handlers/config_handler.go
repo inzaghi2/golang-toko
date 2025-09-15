@@ -16,7 +16,7 @@ func init() {
 	var err error
 
 	// Try primary MySQL database first.
-	db, err = gorm.Open("mysql", "root:AzBlfEsMNczEdwYEOozgKZwKPajpqMuK@crossover.proxy.rlwy.net:26161/railway")
+	db, err = gorm.Open("mysql", "root:Zaghi08@@tcp(127.0.0.1:3306)/ecomm?charset=utf8mb4&parseTime=True&loc=Local")
 
 	// Check connectivity – db.Ping reveals whether the database is actually reachable.
 	if err == nil {
