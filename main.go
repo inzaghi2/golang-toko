@@ -5,7 +5,6 @@ import (
 	"golang-toko/handlers"
 	"golang-toko/middlewares"
 	"golang-toko/migrations"
-	"golang-toko/seeders"
 
 	"github.com/gin-gonic/gin"
 
@@ -21,7 +20,7 @@ func main() {
 	defer db.Close()
 
 	migrations.Migrate(db)
-	seeders.Seed(db)
+	// seeders.Seed(db)
 
 	router := gin.Default()
 
